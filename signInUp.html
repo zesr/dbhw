@@ -82,9 +82,9 @@
 
 								<div class="row">
 									<div class=" col s6 offset-s3">
-										<center>
-											<button class="btn waves-effect waves-light pink darken-4" type="submit" name="action">Login </button>
-										</center>
+										<div style="text-align: center;">
+											<button class="center btn waves-effect waves-light pink darken-4" type="submit" name="action">Login </button>
+										</div>
 									</div>
 								</div>
 
@@ -96,7 +96,7 @@
 								<div class="row">
 									<div class="input-field col s12">
 										<i class="material-icons prefix">assignment_ind</i>
-										<input name="uid" type="text" class="validate">
+										<input name="uid" id="uid" type="text" class="validate">
 										<label for="uid">School Id</label>
 									</div>
 								</div>
@@ -112,7 +112,7 @@
 								<div class="row">
 									<div class="input-field col s12">
 										<i class="material-icons prefix">phone_iphone</i>
-										<input name="phone" type="text" class="validate">
+										<input name="phone" type="text" id="phone" class="validate">
 										<label for="phone">Phone</label>
 									</div>
 								</div>
@@ -131,7 +131,7 @@
 									<div class="input-field col s12">
 										<i class="material-icons prefix">vpn_key</i>
 										<input name="password2" id="pw2" type="password" oninput="checkpwagain()" class="validate">
-										<label for="password2">Password Again</label>
+										<label for="pw2">Password Again</label>
 										<span class="helper-text" id="tishi" style="font-size: 1em; color: red"></span>
 									</div>
 								</div>
@@ -140,9 +140,9 @@
 
 								<div class="row">
 									<div class=" col s6 offset-s3">
-										<center>
+										<div style="text-align: center;">
 											<button class="btn waves-effect waves-light pink darken-4" type="submit" id="btnsignup">Sign up</button>
-										</center>
+										</div>
 									</div>
 								</div>
 							</form>
@@ -159,11 +159,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
 	<script>
 		$(document).ready(function () {
-			$('ul.tabs').tabs();
+		    //初始化切换标签
+            $('ul.tabs').tabs();
+            //点击重新计算验证码
 			$('#code').click(function () {
 				$('#code').attr('src', 'php/code.php?');
 				// img.setAttribute('src','checkcode.php?r='+Math.random());
 			})
+            //主页渐进效果
 			$('#sign_side_background').hide();
 			$('#sign_side_background').fadeIn(1000);
 		});
@@ -173,7 +176,7 @@
 
 			var password1 = document.getElementById('pw1').value;
 			var pwagain = document.getElementById('pw2').value;
-			if (password1 != pwagain && pwagain.length != 0) {
+			if (password1 !== pwagain && pwagain.length !== 0) {
 				document.getElementById('tishi').innerHTML = "Enter the password twice inconsistent";
 				btnsignup.disabled = true;
 			}
@@ -187,7 +190,7 @@
 			var password1 = document.getElementById('pw1').value;
 			var pattern1=/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d`~!@#$%^&*_+<>{}\/']{8,}/;
 
-				if(password1.length == 0)
+				if(password1.length === 0)
 					{
 						 document.getElementById('tishi2').innerHTML = " 8, having atleast one uppercase letter, one digit";
 						  document.getElementById('tishi2').style.color="grey";
