@@ -1,4 +1,6 @@
-<?php  
+<?php
+
+//被getTable调用，用于创建表格页面
     class Page {  
           private $total;      //总记录  
           private $pagesize;    //每页显示多少条  

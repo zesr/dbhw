@@ -50,6 +50,7 @@ else{
     }
     else{
         $totalRows = mysqli_num_rows($result);
+//        创建表格页面
         $_page = new Page($totalRows,$pageSize);
         $limit = $_page->limit;
         $query = $query."".$limit;
