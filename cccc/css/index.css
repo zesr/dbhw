@@ -1,0 +1,21 @@
+#search_bar{
+    vertical-align: middle;
+}
+#slider_container{
+    border-bottom: 2px #880e4f;
+}
+@media screen and (max-width:  600px){
+    #search{
+        display: block;
+        margin: 0 auto; 
+    }
+    /*
+    .pagination{
+        display: inline;
+    }
+    #pagination_container{
+        display: inline-block;
+        text-align: center;
+    }
+    */
+}

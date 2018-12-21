@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link type="text/css" rel="stylesheet" href="css/signInUp.css">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<div class="row" id="sign_page_background">
+		<div class="col s12 m12 l7" id="sign_side_background">
+			<div id="sign_welcome">
+				<h1>Welcome</h1>
+				<h3>to SZU stadium e-booking system</h3>
+				<h5>login or sign up to enjoy healthy life</h5>
+			</div>
+		</div>
+		<div class="col s12 m12 l5" id="sign_form_background">
+			<div class="row" id="sign_form_container">
+				<div class=" col s10 m6 l8 offset-l2 offset-m3 offset-s1 card-panel hoverable">
+					<div class="row">
+						<div class="col s12">
+							<ul class="tabs">
+								<li class="tab col s6">
+									<a class="active" href="#SignIn">Login</a>
+								</li>
+								<li class="tab col s6">
+									<a href="#SignUp">Sign up</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div id="TabContent">
+						<div id="SignIn" class="col s12">
+							<form action="php/login.php" method="post">
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">assignment_ind</i>
+										<input name="uid" type="text" class="validate">
+										<label for="id">School Id</label>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">vpn_key</i>
+										<input name="password" type="password" class="validate">
+										<label for="password">Password</label>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="input-field col s12 l8">
+										<i class="material-icons prefix">keyboard</i>
+										<input name="passcode" type="text" class="validate">
+										<label for="code">Verification code</label>
+									</div>
+									<div class="input-field col s12 l4">
+										<img src="php/code.php" id="code" width="80px">
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class=" col s6 offset-s3">
+										<center>
+											<button class="btn waves-effect waves-light pink darken-4" type="submit" name="action">Login </button>
+										</center>
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<div id="SignUp" class="col s12">
+							<form action="php/signUp.php" method="post">
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">assignment_ind</i>
+										<input name="uid" type="text" class="validate">
+										<label for="uid">School Id</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">person</i>
+										<input name="uname" type="text" class="validate">
+										<label for="id">Name</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">phone_iphone</i>
+										<input name="phone" type="text" class="validate">
+										<label for="phone">Phone</label>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">vpn_key</i>
+										<input name="password" id="pw1" type="password" class="validate" oninput="checkpassword()">
+										<label for="password">Password</label>
+										<span class="helper-text" id="tishi2" style="font-size: 1em; color: grey"> more than 8 words, having atleast one uppercase letter, one digit.</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">vpn_key</i>
+										<input name="password2" id="pw2" type="password" oninput="checkpwagain()" class="validate">
+										<label for="password2">Password Again</label>
+										<span class="helper-text" id="tishi" style="font-size: 1em; color: red"></span>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class=" col s6 offset-s3">
+										<center>
+											<button class="btn waves-effect waves-light pink darken-4" type="submit" id="btnsignup">Sign up</button>
+										</center>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- div TabContent-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('ul.tabs').tabs();
+			$('#code').click(function () {
+				$('#code').attr('src', 'php/code.php?');
+				// img.setAttribute('src','checkcode.php?r='+Math.random());
+			})
+			$('#sign_side_background').hide();
+			$('#sign_side_background').fadeIn(1000);
+		});
+	</script>
+	<script type="text/javascript">
+		function checkpwagain() {
+
+			var password1 = document.getElementById('pw1').value;
+			var pwagain = document.getElementById('pw2').value;
+			if (password1 != pwagain && pwagain.length != 0) {
+				document.getElementById('tishi').innerHTML = "Enter the password twice inconsistent";
+				btnsignup.disabled = true;
+			}
+			else {
+				document.getElementById('tishi').innerHTML = "";
+				btnsignup.disabled = false;
+			}
+		}
+		function checkpassword()
+		{
+			var password1 = document.getElementById('pw1').value;
+			var pattern1=/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d`~!@#$%^&*_+<>{}\/']{8,}/;
+
+				if(password1.length == 0)
+					{
+						 document.getElementById('tishi2').innerHTML = " 8, having atleast one uppercase letter, one digit";
+						  document.getElementById('tishi2').style.color="grey";
+					btnsignup.disabled=true;  
+					}
+
+					else if(password1.length<8)
+					{
+						 document.getElementById('tishi2').innerHTML = "you password setting too short";
+						  document.getElementById('tishi2').style.color="red";
+					btnsignup.disabled=true;  
+					}
+					else  if(!pattern1.test(password1)){ 
+				document.getElementById('tishi2').innerHTML="password setting is not legal " ;
+				 document.getElementById('tishi2').style.color="red";
+				btnsignup.disabled=true;  
+				} 
+			   else{ 
+			 document.getElementById('tishi2').innerHTML="OK";
+			 document.getElementById('tishi2').style.color="green";
+			 btnsignup.disabled=false;  
+			 } 
+		} 	
+	</script>
+</body>
+
+</html>
