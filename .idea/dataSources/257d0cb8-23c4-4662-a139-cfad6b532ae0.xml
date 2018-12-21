@@ -930,194 +930,179 @@
     <table id="234" parent="2" name="userorder">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <scheduled-event id="235" parent="2" name="e_13">
-      <SourceTextLength>45</SourceTextLength>
-      <Definer>root@localhost</Definer>
-      <Starts>&apos;2018-11-30 00:00:00&apos;</Starts>
-      <Preserve>0</Preserve>
-      <Status>enabled</Status>
-    </scheduled-event>
-    <scheduled-event id="236" parent="2" name="e_14">
-      <SourceTextLength>45</SourceTextLength>
-      <Definer>root@localhost</Definer>
-      <Starts>&apos;2018-12-21 00:00:00&apos;</Starts>
-      <Preserve>0</Preserve>
-      <Status>enabled</Status>
-    </scheduled-event>
-    <scheduled-event id="237" parent="2" name="e_15">
-      <SourceTextLength>45</SourceTextLength>
-      <Definer>root@localhost</Definer>
-      <Starts>&apos;2018-12-21 00:00:00&apos;</Starts>
-      <Preserve>0</Preserve>
-      <Status>enabled</Status>
-    </scheduled-event>
-    <column id="238" parent="229" name="fieldid">
+    <column id="235" parent="229" name="fieldid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="229" name="fieldname">
+    <column id="236" parent="229" name="fieldname">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="229" name="stadiumid">
+    <column id="237" parent="229" name="stadiumid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="241" parent="229" name="PRIMARY">
+    <column id="238" parent="229" name="remain">
+      <Position>4</Position>
+      <DataType>int(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="239" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>fieldid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="242" parent="230" name="periodid">
+    <column id="240" parent="230" name="periodid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="230" name="starttime">
+    <column id="241" parent="230" name="starttime">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="230" name="endtime">
+    <column id="242" parent="230" name="endtime">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="245" parent="230" name="PRIMARY">
+    <key id="243" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>periodid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="246" parent="231" name="sessionid">
+    <column id="244" parent="231" name="sessionid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="231" name="fieldid">
+    <column id="245" parent="231" name="fieldid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="231" name="periodid">
+    <column id="246" parent="231" name="periodid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="249" parent="231" name="PRIMARY">
+    <key id="247" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>sessionid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="250" parent="232" name="stadiumid">
+    <column id="248" parent="232" name="stadiumid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="stadiumname">
+    <column id="249" parent="232" name="stadiumname">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="232" name="price">
+    <column id="250" parent="232" name="price">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="253" parent="232" name="PRIMARY">
+    <key id="251" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>stadiumid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="254" parent="233" name="uid">
+    <column id="252" parent="233" name="uid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="233" name="uname">
+    <column id="253" parent="233" name="uname">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="233" name="balance">
+    <column id="254" parent="233" name="balance">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="233" name="password">
+    <column id="255" parent="233" name="password">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="233" name="phone">
+    <column id="256" parent="233" name="phone">
       <Position>5</Position>
       <DataType>varchar(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="259" parent="233" name="PRIMARY">
+    <key id="257" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="260" parent="234" name="oid">
+    <column id="258" parent="234" name="oid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="234" name="sessionid">
+    <column id="259" parent="234" name="sessionid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="234" name="uid">
+    <column id="260" parent="234" name="uid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="234" name="entrytime">
+    <column id="261" parent="234" name="entrytime">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="234" name="booktime">
+    <column id="262" parent="234" name="booktime">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="234" name="valid">
+    <column id="263" parent="234" name="valid">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="266" parent="234" name="PRIMARY">
+    <key id="264" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>oid</ColNames>
       <Primary>1</Primary>

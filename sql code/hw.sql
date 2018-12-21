@@ -1,65 +1,43 @@
--- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: 2018-01-04 12:25:48
--- 服务器版本： 5.7.14
--- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `hw`
---
-
--- --------------------------------------------------------
-
---
--- 表的结构 `field`
---
-
+--设置场所
 CREATE TABLE `field` (
   `fieldid` int(11) NOT NULL,
   `fieldname` varchar(45) NOT NULL,
-  `stadiumid` int(11) NOT NULL
+  `stadiumid` int(11) NOT NULL,
+  `remain` int(100) NOT NULL.
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `field`
+-- 转存表中的数据 `field`场所
 --
 
-INSERT INTO `field` (`fieldid`, `fieldname`, `stadiumid`) VALUES
-(10001, '#1 basketball field', 1),
-(10002, '#2 basketball field', 1),
-(20001, '#1 swimming pool', 2),
-(10003, '#3 basketball field', 1),
-(10004, '#4 basketball field', 1),
-(20002, '#2 swimming pool', 2),
-(20003, '#3 swimming pool', 2),
-(20004, '#4 swimming pool', 2),
-(30001, '#1 tennis field', 3),
-(30002, '#2 tennis field', 3),
-(30003, '#3 tennis field', 3),
-(30004, '#4 tennis field', 3),
-(40001, '#1 badminton field', 4),
-(40002, '#2 badminton field', 4),
-(40003, '#3 badminton field', 4),
-(40004, '#4 badminton field', 4),
-(40005, '#5 badminton field', 4),
-(40006, '#6 badminton field', 4);
+INSERT INTO `field` (`fieldid`, `fieldname`, `stadiumid`,`remain`) VALUES
+(10001, '#1 basketball field', 1,30),
+(10002, '#2 basketball field', 1,30),
+(20001, '#1 swimming pool', 2,30),
+(10003, '#3 basketball field', 1,30),
+(10004, '#4 basketball field', 1,30),
+(20002, '#2 swimming pool', 2,30),
+(20003, '#3 swimming pool', 2,30),
+(20004, '#4 swimming pool', 2,30),
+(30001, '#1 tennis field', 3,30),
+(30002, '#2 tennis field', 3,30),
+(30003, '#3 tennis field', 3,30),
+(30004, '#4 tennis field', 3,30),
+(40001, '#1 badminton field', 4,30),
+(40002, '#2 badminton field', 4,30),
+(40003, '#3 badminton field', 4,30),
+(40004, '#4 badminton field', 4,30),
+(40005, '#5 badminton field', 4,30),
+(40006, '#6 badminton field', 4,30);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `period`
+-- 表的结构 `period`开放时间段
 --
 
 CREATE TABLE `period` (
@@ -80,7 +58,7 @@ INSERT INTO `period` (`periodid`, `starttime`, `endtime`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `session`
+-- 表的结构 `session`场馆记录
 --
 
 CREATE TABLE `session` (
@@ -152,7 +130,7 @@ INSERT INTO `session` (`sessionid`, `fieldid`, `periodid`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `stadium`
+-- 表的结构 `stadium`场馆
 --
 
 CREATE TABLE `stadium` (
@@ -174,7 +152,7 @@ INSERT INTO `stadium` (`stadiumid`, `stadiumname`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `user`
+-- 表的结构 `user`用户
 --
 
 CREATE TABLE `user` (
@@ -203,7 +181,7 @@ INSERT INTO `user` (`uid`, `uname`, `balance`, `password`, `phone`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `userorder`
+-- 表的结构 `userorder`订单数据
 --
 
 CREATE TABLE `userorder` (
@@ -233,7 +211,7 @@ INSERT INTO `userorder` (`oid`, `sessionid`, `uid`, `entrytime`, `booktime`, `va
 (12, 1000402, 182029, 'Friday 14:00-17:00', '2018-01-04 12:06:38', 1);
 
 --
--- Indexes for dumped tables
+-- 设置主键
 --
 
 --
@@ -274,25 +252,25 @@ ALTER TABLE `userorder`
 
 DELIMITER $$
 --
--- 事件
+-- 事件 每天12点会设置订单成无效
 --
-CREATE DEFINER=`root`@`localhost` EVENT `e_8` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 8$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_6` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 6$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_7` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 7$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_5` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 5$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_4` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 4$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_11` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 11$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_10` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 10$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_9` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 9$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `e_12` ON SCHEDULE AT '2018-01-05 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 12$$
+CREATE DEFINER=`root`@`localhost` EVENT `e_8` ON SCHEDULE AT '2018-12-1 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0-- where oid = 8$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_6` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 6$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_7` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 7$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_5` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 5$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_4` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 4$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_11` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 11$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_10` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 10$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_9` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 9$$
+--
+-- CREATE DEFINER=`root`@`localhost` EVENT `e_12` ON SCHEDULE AT '2018-12-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO update userorder set valid = 0 where oid = 12$$
 
 DELIMITER ;
 
