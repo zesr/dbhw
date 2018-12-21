@@ -5,6 +5,7 @@ session_start();
 if(!isset($_SESSION['userinfo'])|| empty($_SESSION['userinfo'])){
 	header("location: ../signInUp.html");
 }
+
 if(!isset($_POST['oid'])){
     echo "<script>alert('invalid access!');window.location.href = 'profile.php';</script>";
 }
@@ -39,12 +40,14 @@ else{
     }
     $row = $result->fetch_assoc();
     $price = floatval($row['price']);
-    //get the price
 
+//获取剩余金钱
     $query = "select balance from user where uid = $uid;";
     $result = $connection->query($query);
     $row = $result->fetch_assoc();
     $balance = floatval($row['balance']);
+
+    //剩余金钱不足
     if($balance<$price){
         echo "<script>alert('your balance is not enough!please go to recharge.');window.location.href = 'profile.php';</script>";
         exit;
@@ -53,7 +56,7 @@ else{
     }
     //check the money
 
-    //get the new money
+//    删除对应数据
     $query = "delete from userorder where oid = $oid";
     $result = $connection->query($query);
     if( !$result ){

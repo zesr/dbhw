@@ -17,6 +17,7 @@ else{
     if(isset($_GET['stadium'])&&isset($_GET['period'])){
         $stadiumId = trim($_GET["stadium"]);
         $periodId = trim($_GET["period"]);
+//        分场馆以及时间段显示
         if($stadiumId!="0")
         {
             $query= $query." and S.STADIUMID = $stadiumId ";
@@ -55,7 +56,8 @@ else{
         $result = $connection->query($query);
         $show_page = $_page->showpage();
         $today = date("l",strtotime("1 day"));
-        
+
+//        创建表格页面
         while($row=$result->fetch_array()){
             $time = $today." ".$row['STARTTIME']."-".$row['ENDTIME'];
             $return_data = $return_data."<tr><td>".$row['stadiumName']."</td>";

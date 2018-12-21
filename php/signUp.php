@@ -3,6 +3,7 @@ include('connectvars.php');
 session_start();
 $err_msg = '';
 
+//获得对应信息
 $uid=trim($_POST["uid"]);
 $password=trim($_POST["password"]);
 $uname=trim($_POST["uname"]);
@@ -21,7 +22,7 @@ else{
    		echo "Error: " . $connection->connect_error . "\n";
    		exit;
 	}
-	$uid = stripslashes($uid);
+        $uid = stripslashes($uid);
     $password = stripslashes($password);
     $uname = stripslashes($uname);
     $phone = stripslashes($phone);
@@ -46,12 +47,14 @@ else{
         $query = "insert into user (uid,uname,balance,password,phone) values('$uid', '$uname','$balance','$password','$phone')";
         $result = $connection->query($query);
         if($result)
-        {  
+        {
+//            注册成功，返回登录界面，页面上填写好的数据被消除
             echo "<script>alert('Sign in successful!');history.back(-1);</script>";
         }  
         else  
-        {  
-            echo "<script>alert('Sorry, there are some exceptions！'); history.go(-1);</script>";  
+        {
+//            页面上填写好的信息没有消除
+            echo "<script>alert('Sorry, there are some exceptions！'); history.go(-1);</script>";
         } 
     }
 	$connection->close(); // Closing Connection

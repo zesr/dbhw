@@ -56,13 +56,14 @@ else{
     $row = $result->fetch_assoc();
     $balance = floatval($row['balance']);
 
+//    余额不足
     if($balance<$price){
         echo "<script>alert('your balance is not enough!please go to recharge.');window.location.href = 'profile.php';</script>";
         exit;
     }else{
         $new_balance = $balance-$price;
     }
-    //check the money
+
 
     $query = "insert INTO userorder (oid,sessionid,uid,entrytime,booktime,valid) VALUES ($oid,$session_id,$uid,'$entry_time', CURRENT_TIMESTAMP,'1');";
     $result = $connection->query($query);

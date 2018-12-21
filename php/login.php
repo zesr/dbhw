@@ -1,18 +1,21 @@
 <?php
 include('connectvars.php');
+//初始化session,储存用户信息
 session_start();
 $err_msg = '';
 if(isset($_POST['action'])){
-	$code=trim($_POST["passcode"]);
+//    处理得到的数据
+    $code=trim($_POST["passcode"]);
 	$uid=trim($_POST["uid"]);
-	$password=trim($_POST["password"]);
-	if($code != $_SESSION["passcode"]){
+    $password=trim($_POST["password"]);
+    if($code != $_SESSION["passcode"]){
 		$err_msg = "Verification code error";
 	}
 	elseif($uid=='' || $password==''){
 		$err_msg = "Username or Password is invalid";  
 	}
 	else{
+//	    连接MYSQL
 		$connection = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 		if ($connection->connect_errno) {
 			echo "Sorry, this website is experiencing problems.";
@@ -23,9 +26,10 @@ if(isset($_POST['action'])){
 		}
 		$uid = stripslashes($uid);
 		$password = stripslashes($password);
+//		转义，预防数据库攻击
 		$uid = $connection->real_escape_string($uid);
 		$password = $connection->real_escape_string($password);
-
+//编写SQL语句
 		$query="select * from user where password='$password' AND uid='$uid'";
 		$result = $connection->query($query);
 		if( !$result ){
@@ -41,6 +45,7 @@ if(isset($_POST['action'])){
 				'uid'=>$uid,
 				'uname'=>$rows['uname']
 			);
+//			跳转
 			header("location: ../index.html"); // Redirecting To Other Page
 		} 
 		else {

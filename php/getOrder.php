@@ -9,6 +9,7 @@ if(!isset($_POST['valid'])){
     echo "<script>alert('invalid access!');window.location.href = 'profile.php';</script>";
 }
 else{
+//    获取订单数据
     $return_data = "";
     $uid = trim($_SESSION['userinfo']['uid']);
     $valid = trim($_POST['valid']);

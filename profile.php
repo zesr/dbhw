@@ -22,6 +22,7 @@ if( !$result ){
 }
 else{
     $rows = $result->fetch_assoc();
+//    查询失败则返回登录界面
     if($rows){
         $balance = $rows['balance'];
         $phone = $rows['phone'];
@@ -50,6 +51,7 @@ else{
 </head>
 <body>
 
+<!--导航栏-->
     <nav>
         <div class="nav-wrapper pink darken-4">
             <div class="container">
@@ -84,6 +86,9 @@ else{
             </div>
         </div>
     </nav>
+<!--导航栏-->
+
+<!--欢迎标语-->
         <div class="row">
                 <div class="slider">
                     <ul class="slides">
@@ -98,6 +103,8 @@ else{
                 </ul>
             </div>
         </div>
+
+<!--用户资料模块-->
     <div class="page_container">
         <div class="row">
             <div class="col s10 m8 l3 offset-s1 offset-m2">
@@ -123,14 +130,16 @@ else{
                                 <td id="balance_value"><?php echo $balance ?></td>
                             </tr>
                         </table>
-                        
                     </div>
+
+<!--                    充值-->
                     <div class="card-action">
                         <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add</i>recharge</a>
                     </div>
                 </div>
             </div>
-            
+
+<!--            订单-->
             <div class="col s10 m8 l9 offset-s1 offset-m2">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
@@ -140,7 +149,8 @@ else{
                         </div>
                     </div>
                 </div>
-            
+
+<!--                历史订单    -->
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                         <span class="card-title"><i class="material-icons">assignment_turned_in</i> History Order</span>
@@ -172,7 +182,7 @@ else{
         <div id="msg"></div>
     </div>
 
-
+<!--下边栏-->
     <footer class="page-footer pink darken-4">
         <div class="container">
             <div class="row">
@@ -197,16 +207,18 @@ else{
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2018 Copyright SZU CSSE students Eas and Xander
+                © Life is fantasy.
                 <a class="grey-text text-lighten-4 right" href="#!"></a>
             </div>
         </div>
     </footer>
 </body>
+
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
     $(function(){
+        //初始化
         $(".button-collapse").sideNav();
         $('.dropdown-button').dropdown('close');
         $('#username').load("php/getUserInfo.php");
@@ -224,6 +236,7 @@ else{
         $('.modal').modal();
         $('.slider').slider();
         $('.indicators').hide();
+        //充值功能实现
         $("#recharge").click(function(){
             var money = $('#money').val();
             $.post('php/recharge.php',{money:money},function(data) { 

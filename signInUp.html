@@ -164,7 +164,6 @@
             //点击重新计算验证码
 			$('#code').click(function () {
 				$('#code').attr('src', 'php/code.php?');
-				// img.setAttribute('src','checkcode.php?r='+Math.random());
 			})
             //主页渐进效果
 			$('#sign_side_background').hide();
@@ -173,7 +172,7 @@
 	</script>
 	<script type="text/javascript">
 		function checkpwagain() {
-
+            //设置按钮状态
 			var password1 = document.getElementById('pw1').value;
 			var pwagain = document.getElementById('pw2').value;
 			if (password1 !== pwagain && pwagain.length !== 0) {
@@ -185,8 +184,10 @@
 				btnsignup.disabled = false;
 			}
 		}
+		//
 		function checkpassword()
 		{
+		    //检查密码是否合法
 			var password1 = document.getElementById('pw1').value;
 			var pattern1=/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d`~!@#$%^&*_+<>{}\/']{8,}/;
 

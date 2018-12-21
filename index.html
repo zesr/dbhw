@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <!--兼容IE-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,6 +18,7 @@
 
 <body>
     <nav>
+        <!--导航栏-->
         <div class="nav-wrapper pink darken-4">
             <div class="container">
                 <a href="index.html" class="brand-logo">
@@ -25,6 +27,7 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse">
                     <i class="material-icons">menu</i>
                 </a>
+                <!--电脑版本-->
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active">
                         <a href="index.html">Booking hall</a>
@@ -43,6 +46,7 @@
                         </a>
                     </li>
                 </ul>
+                <!--手机版本，侧边滑栏-->
                 <ul class="side-nav" id="mobile-demo">
                     <li class="active">
                         <a href="index.html">
@@ -62,7 +66,7 @@
                             <i class="material-icons">keyboard_arrow_right</i>exit</a>
                     </li>
                 </ul>
-                <!-- Dropdown Structure of user  -->
+                <!--电脑界面右边下滑菜单-->
                 <ul id='dropdown1' class='dropdown-content'>
                     <li>
                         <a href="profile.php">
@@ -76,7 +80,7 @@
             </div>
         </div>
     </nav>
-
+<!--标语-->
     <div class="row">
         <div class="slider">
             <ul class="slides">
@@ -92,14 +96,14 @@
         </div>
     </div>
 
+    <!--选择-->
     <div class="container">
-
-
         <div class="row">
             <form method="get" class="col s12">
                 <div class="rows" id="search_bar">
                     <div class="input-field col s12 m5 l5">
                         <select name="stadium" id="stadium">
+                            <!--场馆-->
                             <option value="0">Any stadium</option>
                             <option value="1">Basketball stadium</option>
                             <option value="2">Swimming stadium</option>
@@ -111,6 +115,7 @@
 
                     <div class="input-field col s12 m5 l5">
                         <select name="period" id="period">
+                            <!--时间段-->
                             <option value="0">Any time</option>
                             <option value="1">8-11</option>
                             <option value="2">14-17</option>
@@ -119,6 +124,7 @@
                         <label>Choose the time interval you want</label>
                     </div>
 
+                    <!--搜索按钮-->
                     <div class="col s12 m2 l2">
                         <button class="btn waves-effect waves-light btn-large pink darken-2" type="button" name="action" id="search">
                             search
@@ -129,6 +135,7 @@
             </form>
         </div>
 
+        <!--场馆列表-->
         <div class="row">
             <div class="col s12">
                 <div id="display_field"></div>
@@ -139,6 +146,7 @@
         </div>
     </div>
 
+    <!--下边栏-->
     <footer class="page-footer pink darken-4">
         <div class="container">
             <div class="row">
@@ -163,14 +171,14 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                © 2018 Copyright SZU CSSE students Eas and Xander
+                © Life is fantasy.
                 <a class="grey-text text-lighten-4 right" href="#!"></a>
             </div>
         </div>
     </footer>
-
-
 </body>
+
+
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
@@ -178,6 +186,7 @@
         $(".button-collapse").sideNav();
         $('.dropdown-button').dropdown('close');
         $('#username').load("php/getUserInfo.php");
+        //下滑设置
         $('.dropdown-button').dropdown({
             inDuration: 300,
             outDuration: 225,
@@ -188,10 +197,13 @@
             alignment: 'left', // Displays dropdown with edge aligned to the left of button
             stopPropagation: false // Stops event propagation
         });
+        //初始化组件
         $('select').material_select();
         $('.slider').slider();
         $('.indicators').hide();
+        // 绘画图表
         $('#display_field').load("php/getTable.php");
+        //搜索功能，绘制图表
         $('#search').click(function () {
             var stadium = $("#stadium").val();
             var period = $("#period").val();
